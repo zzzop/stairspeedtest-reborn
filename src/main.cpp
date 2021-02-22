@@ -73,6 +73,7 @@ bool multilink_export_as_one_image = false;
 bool single_test_force_export = false;
 bool verbose = false;
 std::string export_sort_method = "none";
+std::string spec_siteurl = "http://www.line.games";
 
 int avail_status[5] = {0, 0, 0, 0, 0};
 unsigned int node_count = 0;
