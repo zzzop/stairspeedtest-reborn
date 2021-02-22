@@ -15,9 +15,11 @@ on:
 jobs:
   linux_arm64_build:
     name: Linux arm64 Build
-    runs-on: ARM64
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Install QEMU
+      run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
     - name: Build
       run: |
         docker run -v $GITHUB_WORKSPACE:/root/workdir -e TRAVIS_BRANCH=action -e TRAVIS_TAG=action multiarch/alpine:aarch64-latest-stable /bin/sh -c "apk add bash git && cd /root/workdir && bash scripts/build.alpine.release.sh"
