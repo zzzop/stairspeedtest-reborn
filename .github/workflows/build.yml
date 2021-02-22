@@ -13,9 +13,9 @@ on:
     types: [started]
 
 jobs:
-  linux64_build:
+  linux_arm64_build:
     name: Linux arm64 Build
-    runs-on: ubuntu-latest
+    runs-on: ARM64
     steps:
     - uses: actions/checkout@v2
     - name: Build
