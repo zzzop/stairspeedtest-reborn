@@ -400,6 +400,7 @@ void readConf(std::string path)
 
     ini.EnterSection("advanced");
     ini.GetIfExist("speedtest_mode", speedtest_mode);
+    ini.GetIfExist("spec_siteurl", spec_siteurl);
     ini.GetBoolIfExist("test_site_ping", test_site_ping);
     ini.GetBoolIfExist("test_upload", test_upload);
     ini.GetBoolIfExist("test_nat_type", test_nat_type);
@@ -703,7 +704,7 @@ int singleTest(nodeInfo &node)
         printMsg(SPEEDTEST_MESSAGE_STARTGPING, rpcmode, id);
         writeLog(LOG_TYPE_INFO, "Now performing site ping...");
         //websitePing(node, "https://www.google.com/", testserver, testport, username, password);
-        sitePing(node, testserver, testport, username, password, "https://www.line.games");
+        sitePing(node, testserver, testport, username, password, spec_siteurl);
         logdata = std::accumulate(std::next(std::begin(node.rawSitePing)), std::end(node.rawSitePing), std::to_string(node.rawSitePing[0]), [](std::string a, int b){return std::move(a) + " " + std::to_string(b);});
         writeLog(LOG_TYPE_RAW, logdata);
         writeLog(LOG_TYPE_INFO, "Site ping: " + node.sitePing);
