@@ -14,7 +14,7 @@ on:
 
 jobs:
   linux64_build:
-    name: Linux x86_64 Build
+    name: Linux arm64 Build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -24,5 +24,5 @@ jobs:
     - name: Upload
       uses: actions/upload-artifact@v2
       with:
-        name: stairspeedtest_reborn_linux64
+        name: stairspeedtest_reborn_arm64
         path: stairspeedtest/
